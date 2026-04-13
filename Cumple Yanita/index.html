@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regalito Virtual</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Trebuchet MS", "Verdana", sans-serif;
+    }
+
+    body {
+      background: url(https://i.pinimg.com/736x/f3/51/2d/f3512dc7b9145358e0e66f225ba712dd.jpg);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      color: #222222;
+    }
+
+    .window {
+      width: 100%;
+      max-width: 1100px;
+      background: #efefef;
+      border: 3px solid #7d7d7d;
+      border-top-color: #fff;
+      border-left-color: #fff;
+      box-shadow: 10px 10px 0 rgba(0,0,0,0.15);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .title-bar {
+      background: linear-gradient(to bottom, #636B2F, #636B2F);
+      color: white;
+      padding: 12px 18px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 3px solid #bdbdbd;
+    }
+
+    .menu {
+      background: linear-gradient(to bottom, #dedede, #cfcfcf);
+      padding: 10px 12px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-bottom: 2px solid #b1b1b1;
+    }
+
+    .tab {
+      background: #ededed;
+      border: 2px solid #b5b5b5;
+      border-bottom: none;
+      border-top-color: #fff;
+      border-left-color: #fff;
+      padding: 10px 24px;
+      border-radius: 8px 8px 0 0;
+      font-size: 1.05rem;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 280px 1fr 260px;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .panel, .box {
+      background: #f6f6f6;
+      border: 2px solid #b7b7b7;
+      border-top-color: #fff;
+      border-left-color: #fff;
+      box-shadow: inset -1px -1px 0 #bcbcbc;
+    }
+
+    .panel {
+      padding: 12px;
+    }
+
+    .box {
+      padding: 10px;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border: 2px solid #636B2F;
+      margin-bottom: 10px;
+      background: #ddd;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: #636B2F;
+      letter-spacing: 1px;
+    }
+
+    .dropdown {
+        width: 100%;
+        display: block;
+        padding: 10px;
+        border: 2px solid #b5b5b5;
+        background: #636B2F;
+        margin-bottom: 12px;
+        font-size: 1rem;
+         color: white;
+        border-radius: 4px;
+        min-height: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+      font-size: 0.96rem;
+    }
+
+    th, td {
+      padding: 8px 6px;
+      border-bottom: 1px solid #cfcfcf;
+      text-align: left;
+    }
+
+    th {
+      color: #666;
+      font-weight: 600;
+    }
+
+    .mini-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mini-gallery img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border: 2px solid #a9a9a9;
+      background: #ddd;
+    }
+
+    .text-box {
+      margin-bottom: 14px;
+    }
+
+    .text-box p {
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    button, .fake-btn {
+      background: #ececec;
+      border: 2px solid #b9b9b9;
+      border-top-color: #fff;
+      border-left-color: #fff;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #222;
+      display: inline-block;
+    }
+
+    button:active, .fake-btn:active {
+      border-top-color: #8d8d8d;
+      border-left-color: #8d8d8d;
+      border-right-color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    .ascii {
+      white-space: pre-wrap;
+      font-family: "Courier New", monospace;
+      font-size: 0.95rem;
+      line-height: 1.1;
+      min-height: 320px;
+    }
+
+    .right-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border: 2px solid #9d9d9d;
+      margin-top: 12px;
+      background: #ddd;
+    }
+
+    .footer-note {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      text-align: center;
+      color: #555;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="window">
+    <div class="title-bar">▶ Para Yanita ₍^. .^₎⟆</div>
+
+    <div class="menu">
+      <div class="tab">Inicio</div>
+      <div class="tab">Gustos</div>
+      <div class="tab">Mensaje</div>
+    </div>
+
+    <div class="content">
+      <div class="panel">
+        <img
+          class="avatar"
+          src="https://media.discordapp.net/attachments/1412290659699654659/1493037571436056607/image.png?ex=69dd8318&is=69dc3198&hm=3951a9f2ba5060d2415d7898110420621658d9b67616b246f4b8b7fd4bd58b18&=&format=webp&quality=lossless"
+          alt="foto principal"
+        />
+
+       <select class="dropdown" id="sectionSelect">
+            <option value="about">About Me</option>
+            
+            <option value="extra">Extra</option>
+        </select>
+
+        <div id="about" class="info-section">
+          <table>
+            <tr><th>Tipo</th><th>Info</th></tr>
+            <tr><td>Nombre</td><td>Dayana</td></tr>
+            <tr><td>Apodo</td><td>Yanita</td></tr>
+          </table>
+        </div>
+
+        <div id="extra" class="info-section hidden">
+          <table>
+            <tr><th>Mini dato</th><th>Info</th></tr>
+            <tr><td>Conocida desde</td><td>2 ⋆ 1 ⋆ 2026</td></tr>
+            <tr><td>Primera impresión</td><td>alguien super divertida y linda.ᐟ</td></tr>
+            <tr><td>Me gusta de ti</td><td>Que seas una gran amia en la que puedo confiar</td></tr>
+          </table>
+        </div>
+
+        <div class="mini-gallery">
+          <img src="https://i.pinimg.com/736x/79/c1/18/79c118ab25920ddde3908dbda92374a7.jpg" alt="foto 1" />
+          <img src="https://cdn.discordapp.com/attachments/1412290659699654659/1493047742635708507/Screenshot_20260412_183127_Instagram.jpg?ex=69dd8c91&is=69dc3b11&hm=79691fb4cbe4035b2ac1766e5d664590b055edbf8fc706324010725a96b6a542" alt="foto 2" />
+        </div>
+      </div>
+
+      <div>
+        <div class="box text-box">
+          <div class="section-title">Notes.txt</div>
+          <p>
+            Hice esta paginita porque quería darte un detalle bonito aunque sea a distancia.
+            Quise poner un poquito de tus gustos, cosas lindas sobre ti y recordarte que te quiero mucho.
+          </p>
+          
+        </div>
+
+        <div class="box text-box">
+          <div class="section-title">(˶˃ ᵕ ˂˶) .ᐟ.ᐟ</div>
+          <p>
+           Yana todos los momentos que hemos pasado juntas los he disfrutado muchismo, eres
+           una amiga a la cual aprecio y quiero muchismo, espero que podamos ser amigas 
+           por mucho tiempo más, tqm muchismo DayaAdelebu 
+        </div>
+
+        <div class="box text-box">
+          <div class="section-title">Mensaje especial.txt</div>
+          <p>
+            Gracias por existir, por las risas, por acompañarme incluso desde lejos.
+            Este detallito es pequeño, pero está hecho con mucho cariño solo para ti. ♡
+          </p>
+          <div class="footer-note">by ApplePie (˶ᵔ ᵕ ᵔ˶)</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="box" > 
+
+
+            
+<iframe data-testid="embed-iframe" style="border-radius:12px"
+src="https://open.spotify.com/embed/playlist/34ZGwdG1N4p6Z230n4ev8M?utm_source=generator"
+width="100%" height="352"
+frameBorder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+loading="lazy">
+</iframe>
+
+        </div>
+
+        <img
+          class="right-image"
+          src="https://cdn.discordapp.com/attachments/1412290659699654659/1493059620892315658/image.png?ex=69dd97a1&is=69dc4621&hm=7de0118d4638fba03656e445476839b9caddab446f8ffb47a0c4e56c0e6b4453"
+          alt="foto extra"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const select = document.getElementById('sectionSelect');
+    const sections = document.querySelectorAll('.info-section');
+
+    select.addEventListener('change', () => {
+      sections.forEach(section => section.classList.add('hidden'));
+      document.getElementById(select.value).classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
